@@ -1,0 +1,38 @@
+﻿@model gh_graphql.Models.InputModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form class="form form-vertical" asp-action="Index">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label asp-for="organization"></label>
+                    <input asp-for="organization" class="form-control" />
+                    <span asp-validation-for="organization" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label asp-for="repo"></label>
+                    <input asp-for="repo" class="form-control" />
+                    <span asp-validation-for="repo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label asp-for="token"></label>
+                    <input asp-for="token" class="form-control" />
+                    <span asp-validation-for="token" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <br />
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

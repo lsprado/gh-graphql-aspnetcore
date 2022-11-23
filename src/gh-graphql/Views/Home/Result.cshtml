@@ -1,0 +1,47 @@
+﻿@model gh_graphql.Models.Result
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Index" class="btn btn-primary">Nova Consulta</a>
+</p>
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.data.repository.id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.data.repository.id)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.data.repository.name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.data.repository.name)
+    </dd>
+</dl>
+
+@foreach (var item in Model.data.repository.dependencyGraphManifests.nodes)
+{
+    <p><b>@Html.DisplayFor(modelItem => item.blobPath)</b></p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>packageName</th>
+                <th>licenseInfo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dep in item.dependencies.nodes)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => dep.packageName)</td>
+                    <td>@Html.DisplayFor(modelItem => dep.repository.licenseInfo.name)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
